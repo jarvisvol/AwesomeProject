@@ -4,7 +4,7 @@ import Background from '../parts/Background.js';
 import TextInput from '../../../common/TextInput.js';
 import { Button } from 'react-native-paper';
 
-export default function Login({ sampleAction, myData }) {
+export default function Login({ userLogin, myData }) {
   const [loginDetail, setLoginDetail] = useState({ email: { value: '', error: false }, password: { value: '', error: false } });
 
   useEffect(() => {
@@ -12,8 +12,7 @@ export default function Login({ sampleAction, myData }) {
   }, [myData])
 
   const submitHandler = () => {
-    sampleAction();
-    console.log(sampleAction);
+    userLogin({email:loginDetail.email.value , password: loginDetail.password.value});
   }
 
   return (

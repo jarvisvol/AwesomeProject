@@ -1,7 +1,9 @@
 import * as types from './action-types';
 
 const initialState = {
-    mydata:''
+    mydata:'',
+    loginData: {},
+    error:{}
 }
 
 
@@ -11,6 +13,17 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 mydata:action.value
+            }
+        case types.USER_LOGIN_SUCCESS:
+            console.log(action);
+            return {
+                ...state,
+                loginData: action.result
+            }
+            case types.USER_LOGIN_FAILURE:
+            return {
+                ...state,
+                error: action.error
             }
             default:
                 return state;
