@@ -1,11 +1,9 @@
-import { createStore } from 'redux';
+import { combineReducers } from "redux";
+import authReducer from '../../modules/login/store/reducer'
 
-const initialState = {};
 
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
+const rootReducer =  combineReducers({
+  authReducer
+});
 
-const store = createStore(rootReducer);
-
-export default store;
+export default rootReducer;

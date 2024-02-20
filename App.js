@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
-import { Provider } from 'react-redux';
-import Login from './modules/login/components/screen/Login';
-import store from './modules/store/rootReducer.js';
+import LoginComponent from './modules/login/components/index';
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <Login />
-    </Provider>
-
+      <LoginComponent/>
   )
 }

@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Background from '../parts/Background.js';
 import TextInput from '../../../common/TextInput.js';
 import { Button } from 'react-native-paper';
 
-export default function Login() {
+export default function Login({ sampleAction, myData }) {
   const [loginDetail, setLoginDetail] = useState({ email: { value: '', error: false }, password: { value: '', error: false } });
 
+  useEffect(() => {
+    console.log(myData, "lplplp");
+  }, [myData])
+
   const submitHandler = () => {
-    console.log(loginDetail);
+    sampleAction();
+    console.log(sampleAction);
   }
 
   return (
@@ -23,7 +28,7 @@ export default function Login() {
         textContentType="emailAddress"
         keyboardType="email-address"
       />
-      
+
       <TextInput
         label="Password"
         returnKeyType="done"
@@ -31,13 +36,13 @@ export default function Login() {
         onChangeText={(text) => setLoginDetail({ ...loginDetail, password: { value: text, error: '' } })}
         secureTextEntry
       />
-      <Button type='elevated' mode='contained' onPress={() => submitHandler()}>Login</Button>
+      <Button type='elevated' mode='contained' onPress={() => { submitHandler(); }}>Login</Button>
     </Background>
   )
 }
 
 const style = StyleSheet.create({
-  loginBtn:{
-    width:30
+  loginBtn: {
+    width: 30
   }
 })

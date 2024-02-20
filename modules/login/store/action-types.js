@@ -1,0 +1,1 @@
+export const SAMPLE_TYPE_ACTION = 'SAMPLE_TYPE_ACTION';
