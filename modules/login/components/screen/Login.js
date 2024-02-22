@@ -5,8 +5,9 @@ import TextInput from '../../../common/TextInput.js';
 import { Button } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as types from '../../store/action-types.js'
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
-export default function Login({ userLogin, statusOfActions, loginData }) {
+export default function Login({ userLogin, statusOfActions, loginData, isLoading, navigation }) {
 
   const [loginDetail, setLoginDetail] = useState({ email: { value: '', error: false }, password: { value: '', error: false } });
 
@@ -17,6 +18,7 @@ export default function Login({ userLogin, statusOfActions, loginData }) {
           await AsyncStorage.setItem('accessToken', loginData.access_token);
         };
         storeToken();
+        navigation.navigate('Home');
         break;
       default:
         break;
@@ -24,12 +26,7 @@ export default function Login({ userLogin, statusOfActions, loginData }) {
   }, [statusOfActions])
 
   const submitHandler = () => {
-    userLogin({email:loginDetail.email.value , password: loginDetail.password.value});
-  }
-
-  const seeToken = async() => {
-    const toki =  await AsyncStorage.getItem('accessToken');
-    console.log(toki,"l");
+    userLogin({ email: loginDetail.email.value, password: loginDetail.password.value });
   }
 
   return (
@@ -44,7 +41,6 @@ export default function Login({ userLogin, statusOfActions, loginData }) {
         textContentType="emailAddress"
         keyboardType="email-address"
       />
-
       <TextInput
         label="Password"
         returnKeyType="done"
@@ -53,13 +49,11 @@ export default function Login({ userLogin, statusOfActions, loginData }) {
         secureTextEntry
       />
       <Button type='elevated' mode='contained' onPress={() => { submitHandler(); }}>Login</Button>
-      <Button type='elevated' mode='contained' onPress={() => seeToken()}>dfhdg</Button>
+      <View
+        style={{ alignItems: 'center',marginTop:10 }}
+      >
+        <ActivityIndicator animating={isLoading} color={MD2Colors.blueGrey400} />
+      </View>
     </Background>
   )
 }
-
-const style = StyleSheet.create({
-  loginBtn: {
-    width: 30
-  }
-})

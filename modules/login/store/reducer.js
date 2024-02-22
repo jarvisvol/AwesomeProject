@@ -4,23 +4,24 @@ const initialState = {
     mydata:'',
     loginData: {},
     error:{},
-    statusOfActions: ''
+    statusOfActions: '',
+    isLoading:false
 }
 
 
 const authReducer = (state = initialState, action) => {
     switch(action.type){
-        case types.SAMPLE_TYPE_ACTION:
+        case types.USER_LOGIN:
             return {
                 ...state,
-                mydata:action.value,
-                statusOfActions: action.type
+                isLoading: true
             }
         case types.USER_LOGIN_SUCCESS:
             return {
                 ...state,
                 loginData: action.result.data,
-                statusOfActions: action.type
+                statusOfActions: action.type,
+                isLoading: false
             }
             case types.USER_LOGIN_FAILURE:
             return {

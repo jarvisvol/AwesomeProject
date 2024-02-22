@@ -5,7 +5,8 @@ import Login from './screen/Login';
 const mapStateToProps = (state) => {
   return {
     loginData: state.authReducer.loginData,
-    statusOfActions: state.authReducer.statusOfActions
+    statusOfActions: state.authReducer.statusOfActions,
+    isLoading: state.authReducer.isLoading
   };
 };
 
