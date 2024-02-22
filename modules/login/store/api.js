@@ -7,7 +7,6 @@ import {
 } from './action.js'
 
 export const userLogin = async(payload) => {
-    console.log(payload,"llllllllllllllll");
         try {
             const result = await HTTP.post('/user/login', payload);
             store.dispatch(loginSuccess(result.data));

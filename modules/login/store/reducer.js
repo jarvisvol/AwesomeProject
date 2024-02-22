@@ -15,7 +15,6 @@ const authReducer = (state = initialState, action) => {
                 mydata:action.value
             }
         case types.USER_LOGIN_SUCCESS:
-            console.log(action);
             return {
                 ...state,
                 loginData: action.result
