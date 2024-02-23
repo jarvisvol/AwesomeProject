@@ -4,10 +4,9 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 export default function Home() {
     return (
-        <Background>
             <MapView
                 provider={PROVIDER_GOOGLE}
-                style={{height: '50%', width: '50%'}}
+                style={{height: '100%', width: '100%'}}
                 initialRegion={{
                     latitude: 37.78825,
                     longitude: -122.4324,
@@ -15,6 +14,5 @@ export default function Home() {
                     longitudeDelta: 0.0421,
                 }}
             />
-        </Background>
     )
 }
