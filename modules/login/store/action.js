@@ -22,3 +22,25 @@ export const loginFailure = (error) =>{
         error: error.result
     }
 }
+
+export const userRegister = (payload) => {
+    const request = API.userRegister(payload);
+    return {
+        payload: request,
+        type: types.USER_REGISTER
+    }
+}
+
+export const userRegisterSuccess = (result) =>{
+    return {
+        type: types.USER_REGISTER_SUCCESS,
+        result: result
+    }
+}
+
+export const userRegisterFailure = (error) =>{
+    return {
+        type: types.USER_REGISTER_FAILURE,
+        error: error.result
+    }
+}

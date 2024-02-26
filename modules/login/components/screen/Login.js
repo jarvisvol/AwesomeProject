@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextBase, View } from 'react-native';
 import Background from '../parts/Background.js';
 import TextInput from '../../../common/TextInput.js';
 import { Button } from 'react-native-paper';
@@ -49,6 +49,8 @@ export default function Login({ userLogin, statusOfActions, loginData, isLoading
         secureTextEntry
       />
       <Button type='elevated' mode='contained' onPress={() => { submitHandler(); }}>Login</Button>
+      <Text style={{fontSize: 13, color: 'blue', marginTop: 10}}>Or</Text>
+      <Button type='elevated' onPress={() => { navigation.navigate('Register')  }}> <Text style={{textDecorationLine: 'underline'}}>Register</Text> </Button>
       <View
         style={{ alignItems: 'center',marginTop:10 }}
       >

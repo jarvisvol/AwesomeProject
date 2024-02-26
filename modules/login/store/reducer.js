@@ -1,16 +1,17 @@
 import * as types from './action-types';
 
 const initialState = {
-    mydata:'',
+    mydata: '',
     loginData: {},
-    error:{},
+    error: {},
     statusOfActions: '',
-    isLoading:false
+    isLoading: false,
+    registerData: {}
 }
 
 
 const authReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case types.USER_LOGIN:
             return {
                 ...state,
@@ -23,14 +24,33 @@ const authReducer = (state = initialState, action) => {
                 statusOfActions: action.type,
                 isLoading: false
             }
-            case types.USER_LOGIN_FAILURE:
+        case types.USER_LOGIN_FAILURE:
             return {
                 ...state,
                 error: action.error,
                 statusOfActions: action.type
             }
-            default:
-                return state;
+        case types.USER_REGISTER:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case types.USER_REGISTER_SUCCESS:
+            return {
+                ...state,
+                registerData: action.result.data,
+                statusOfActions: action.type,
+                isLoading: false
+            }
+        case types.USER_REGISTER_FAILURE:
+            return {
+                ...state,
+                error: action.error,
+                statusOfActions: action.type
+            }
+
+        default:
+            return state;
     }
 }
 
