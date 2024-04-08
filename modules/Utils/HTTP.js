@@ -6,11 +6,11 @@ const getToken = async() => {
     return token;
 }
 
-const API_URL = 'https://mytownstor.cloud/api'
+const API_URL = 'http://192.168.1.12:4000/api'
 
 axios.defaults.baseURL = API_URL;
 axios.defaults.headers.common.Accept = 'application/json';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.accessToken = getToken();
 
-export default axios;
+export default axios; 

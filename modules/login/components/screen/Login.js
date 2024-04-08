@@ -55,6 +55,7 @@ export default function Login({ userLogin, statusOfActions, loginData, isLoading
         style={{ alignItems: 'center',marginTop:10 }}
       >
         <ActivityIndicator animating={isLoading} color={MD2Colors.blueGrey400} />
+        <Button type='elevated' onPress={() => { () =>apiHandler() }}> <Text style={{textDecorationLine: 'underline'}}>see api</Text> </Button>
       </View>
     </Background>
   )

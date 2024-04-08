@@ -11,8 +11,10 @@ import {
 export const userLogin = async(payload) => {
         try {
             const result = await HTTP.post('/user/login', payload);
+            console.log(result, "hTTP");
             store.dispatch(loginSuccess(result.data));
         } catch (error) {
+            console.log(error);
             store.dispatch(loginFailure(error));
         }
 }
