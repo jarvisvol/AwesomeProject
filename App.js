@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import LoginComponent from './modules/login/components/index';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './modules/screens/homescreen/Home';
 import RegisterComponent from './modules/screens/RegisterScreen/index.js';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" >
-        <Stack.Screen name="Login" component={LoginComponent} />
-        <Stack.Screen name="Register" component={RegisterComponent} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen  name="Home" component={Home} />
+        <Tab.Screen name="Add Employee" component={LoginComponent} />
+        <Tab.Screen name="Help" component={RegisterComponent} />
+        <Tab.Screen name="Profile" component={LoginComponent} />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
